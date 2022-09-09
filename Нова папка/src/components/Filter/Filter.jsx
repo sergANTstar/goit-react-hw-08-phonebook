@@ -12,15 +12,15 @@ const Filter = () => {
         dispatch(filterSlice.filterItems(e.currentTarget.value));
       };
 
-    return (<label>
+    return (<form className={css.filter}>
                 <input
                 type="text"
                 value={filter}
                 onChange={changeFilter}
-                className={css.contact__input}
+                className={css.filter__input}
                 placeholder="Find contacts by name"
                 />
-            </label>);
+            </form>);
 };
 
 export default Filter

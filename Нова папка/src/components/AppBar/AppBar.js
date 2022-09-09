@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import Menu from 'components/Menu/Menu';
+import PhoneBook from 'components/PhoneBook/PhoneBook';
 import { useSelector } from 'react-redux';
 import authSelectors from 'redux/authUser/aurhUser';
 import css from './AppBar.module.css'
@@ -14,8 +14,10 @@ export default function AppBar() {
     return (
         <header className={css.header}>
            {isLoggedIn 
-           ? <Menu/>
-           :(<ul  className={css.header_nav}>
+           ? <PhoneBook/>
+           :(<div>
+           <h1 className={css.header_h}>Phone book</h1>
+           <ul  className={css.header_nav}>
                 <li>
                     <NavLink
                     to="/register"
@@ -32,7 +34,8 @@ export default function AppBar() {
                         Login
                     </NavLink>
                 </li>
-            </ul>)}
+            </ul>
+            </div>)}
         </header>
     );
   }

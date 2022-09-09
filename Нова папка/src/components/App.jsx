@@ -10,6 +10,7 @@ import Spiner from './Spiner/Spiner';
 import {Toaster} from 'react-hot-toast';
 import authSelectors from 'redux/authUser/aurhUser';
 import Backround from './Backround/Backround';
+import Welcome from './Welcome/Welcome';
 
 //const Home = lazy(() => import('../pages/Home/Home'))
 const Registration = lazy(() => import('../pages/Registration/Registration'))
@@ -37,7 +38,7 @@ const ContactsPage = lazy(() => import('../pages/Contacts/ContactPage'))
                 fallback={<Spiner/>}>
                        <Routes>
                           <Route element={<PublicRouter restricted redirectTo="contacts" />}>
-                            <Route path="/" element={<Login />} />
+                            <Route path="/" element={<Welcome/>} />
                           </Route>
                           <Route element={<PublicRouter restricted redirectTo="contacts" />}>
                             <Route path="register" element={<Registration />} />

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import {Navigate, Outlet} from 'react-router-dom';
-import authSelectors from "redux/authUser/aurhUser";
+import authSelectors from "../../redux/authUser/aurhUser";
 
 const PrivateRouter = () =>{
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

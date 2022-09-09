@@ -1,15 +1,17 @@
-import {SpinnerCircular} from 'spinners-react'
+import {SpinnerDotted} from 'spinners-react'
+import css from './Spiner.module.css'
 
 
  const Spiner = () => {
   return (
-    <SpinnerCircular
-       size={50}
-       thickness={100}
-       speed={100}
-       color="#36ad47"
-       secondaryColor="rgba(0, 0, 0, 0.44)"
-       />
+    <div className={css.scpiner}>
+      <SpinnerDotted
+        size={100}
+        thickness={100}
+        speed={100}
+        color="#3498db"
+        />
+    </div>
   );
 };
 

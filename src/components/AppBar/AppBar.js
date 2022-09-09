@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import PhoneBook from 'components/PhoneBook/PhoneBook';
 import { useSelector } from 'react-redux';
-import authSelectors from 'redux/authUser/aurhUser';
+import authSelectors from '../../redux/authUser/aurhUser';
 import css from './AppBar.module.css'
 import classNames from 'classnames';
 

@@ -1,21 +1,21 @@
 import css from '../Filter/Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterSlice } from 'redux/contact'; 
+import {  filter, getFilter } from '../../redux/contact/contactsFilter'; 
 
 const Filter = () => {
 
     const dispatch = useDispatch();
 
-    const filter = useSelector(filterSlice.getFilter);
+    const filterValue = useSelector(getFilter);
 
     const changeFilter = e => {
-        dispatch(filterSlice.filterItems(e.currentTarget.value));
+        dispatch(filter(e.currentTarget.value.toLocaleLowerCase().trim()));
       };
 
     return (<form className={css.filter}>
                 <input
                 type="text"
-                value={filter}
+                value={filterValue}
                 onChange={changeFilter}
                 className={css.filter__input}
                 placeholder="Find contacts by name"

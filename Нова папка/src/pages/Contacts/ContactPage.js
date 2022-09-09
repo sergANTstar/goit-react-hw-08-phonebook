@@ -1,6 +1,7 @@
 import ContactForm from "components/ContactForm/ContactForm";
 import Contacts from "components/Contacts/Contacts";
 import Filter from "components/Filter/Filter";
+import css from "./ContactPage.module.css"
 
 
 const ContactsPage = () => {
@@ -8,9 +9,9 @@ const ContactsPage = () => {
 
     return(
         <section>
-            <h1>Phonebook</h1>
+            <h1 className={css.contast_h}>create contact</h1>
             <ContactForm/>
-            <h2>Contacts</h2>
+            <h2 className={css.contast_h}>contact search</h2>
             <Filter/>
             <Contacts/>
         </section>

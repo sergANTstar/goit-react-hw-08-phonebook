@@ -12,7 +12,6 @@ import authSelectors from 'redux/authUser/aurhUser';
 import Backround from './Backround/Backround';
 import Welcome from './Welcome/Welcome';
 
-//const Home = lazy(() => import('../pages/Home/Home'))
 const Registration = lazy(() => import('../pages/Registration/Registration'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const ContactsPage = lazy(() => import('../pages/Contacts/ContactPage'))
@@ -29,7 +28,7 @@ const ContactsPage = lazy(() => import('../pages/Contacts/ContactPage'))
 
    
   return isFetchCurrentUser ? (
-    <Spiner/>)
+    <Spiner />)
      : ( <>
        <Backround/>
             <>

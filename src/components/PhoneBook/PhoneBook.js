@@ -7,7 +7,7 @@ import classNames from 'classnames';
 const PhoneBook = () => {
 
     const dispatch = useDispatch();
-    const name = useSelector(authSelectors.getUserName);
+    const name = useSelector(authSelectors.getUsername);
 
     return (
         <div className={css.book}>

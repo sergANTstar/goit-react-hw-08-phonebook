@@ -1,8 +1,11 @@
 import css from '../Contacts/Contacts.module.css';
 import { useSelector } from 'react-redux';
-import Spiner from 'components/Spiner/Spiner';
-import { filterSlice} from '../../redux/contact';
-import { contactsApi } from '../../redux/contact';
+
+
+import {useGetContactsQuery, useDeleteContactMutation,
+} from "../../redux/contact/contsctsApi";
+
+import { getFilter } from "../../redux/contact/contactsFilter";
 import PropTypes from 'prop-types';
 
 
@@ -10,9 +13,8 @@ import PropTypes from 'prop-types';
 
 const Contacts = () => {
 
-    const { data: contacts, isLoading: loadingList } =
-    contactsApi.useFetchContactsQuery();
-  const filterValue = useSelector(filterSlice.getFilter);
+  const { data: contacts} = useGetContactsQuery();
+  const filterValue = useSelector(getFilter);
 
 
   const getContactsFilter = () => {
@@ -26,12 +28,10 @@ const Contacts = () => {
   };
   const filterContacts = getContactsFilter();
 
-  const [deleteContact, { isLoading: isDeleting }] =
-  contactsApi.useDeleteContactMutation();
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
    return   ( <div className={css.contacts}>
                 <ul className={css.contacts__list}>
-                    {loadingList && <Spiner/>}
                     { contacts && filterContacts.map(({id, name, number}) => {
                         return(
                             <li className={css.contacts__items} key={id}>

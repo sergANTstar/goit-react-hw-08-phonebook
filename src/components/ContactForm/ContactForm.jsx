@@ -2,16 +2,18 @@ import css from '../ContactForm/ContactForm.module.css';
 import { useState } from 'react';
 import Spiner from 'components/Spiner/Spiner';
 import { toast } from 'react-toastify';
-import { contactsApi } from '../../redux/contact';
+import {
+  useGetContactsQuery,
+  useCreateContactMutation,
+} from "../../redux/contact/contsctsApi"
 import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function ContactForm () {
 
-  const [createContact, { isLoading }] =
-  contactsApi.useCreateContactMutation();
+  const [createContact, { isLoading }] = useCreateContactMutation();
 
-  const { data: contacts } = contactsApi.useFetchContactsQuery();
+  const { data: contacts } = useGetContactsQuery();
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -83,7 +85,7 @@ export default function ContactForm () {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-            <button className={css.contact__button} type="submit">{isLoading ? <Spiner/> : 'Add contac'}t</button>
+            <button className={css.contact__button} type="submit">{isLoading ? <div className={css.spiner}><Spiner/></div> : 'Add contac'}t</button>
           </form>
         );
     }

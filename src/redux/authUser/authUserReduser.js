@@ -1,19 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
-import authOperations from './authUserApi';
-const initialState = {
+import { createSlice } from "@reduxjs/toolkit";
+import authOperations from "./authUserApi";
 
-  
-  user: {
-    name: null,
-    email: null
-  },
+const initialState = {
+  user: { name: "", email: "" },
   token: null,
   isLoggedIn: false,
-  isFetchCurrentUser: false,
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
@@ -30,21 +25,20 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
-    },
-    [authOperations.fetchCurrentUser.pending](state) {
-      state.isFetchCurrentUser = true;
+      state.isFetchCurrentUser = false;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isFetchCurrentUser = false;
-
     },
-     [authOperations.fetchCurrentUser.rejected](state) {
+    [authOperations.fetchCurrentUser.pending](state) {
+      state.isFetchCurrentUser = true;
+    },
+    [authOperations.fetchCurrentUser.rejected](state) {
       state.isFetchCurrentUser = false;
     },
-  }
-})
+  },
+});
 
-
-export default authSlice;
+export default authSlice.reducer;

@@ -53,3 +53,10 @@
     margin-left: 20px;
 }
 
+.spiner{
+    position: absolute;
+    transform: translateY(-85px);
+    left: 550px;
+}
+
+

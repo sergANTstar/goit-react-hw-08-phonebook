@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import Spiner from 'components/Spiner/Spiner';
 import { filterSlice} from '../../redux/contact';
 import { contactsApi } from '../../redux/contact';
+import PropTypes from 'prop-types';
+
 
 
 
@@ -27,14 +29,14 @@ const Contacts = () => {
   const [deleteContact, { isLoading: isDeleting }] =
   contactsApi.useDeleteContactMutation();
 
-   return   (
+   return   ( <div className={css.contacts}>
                 <ul className={css.contacts__list}>
                     {loadingList && <Spiner/>}
-                    { contacts && filterContacts.map(({id, name, phone}) => {
+                    { contacts && filterContacts.map(({id, name, number}) => {
                         return(
-                            <ol className={css.contacts__items} key={id}>
-                                <p>
-                                    {name}: {phone}
+                            <li className={css.contacts__items} key={id}>
+                                <p className={css.contacts__text}>
+                                    {name}: {number}
                                 </p>
                                 <button
                                     className={css.contact__button}
@@ -43,12 +45,20 @@ const Contacts = () => {
                                     disabled={isDeleting}>
                                     {isDeleting ? 'deleting...' : 'Delete'}
                                 </button>
-                            </ol>
+                            </li>
                         )
                     })}
                 </ul>
+                </div>
             );
         
 };
 
+Contacts.propTypes = {
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }),
+};
 export default Contacts
