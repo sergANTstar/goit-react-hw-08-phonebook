@@ -1,0 +1,18 @@
+.contact__input {
+    width: 250px;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none 
+}
+
+.contact__input:hover,
+.contact__input:active,
+.contact__input:focus
+ {
+  outline: 2px solid rgb(102, 175, 239);
+}
+
+.contact__input[input] {
+    outline: 1px solid rgb(102, 175, 239);
+  }
