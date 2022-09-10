@@ -37,7 +37,7 @@ const ContactsPage = lazy(() => import('../pages/Contacts/ContactPage'))
                 fallback={<Spiner/>}>
                        <Routes>
                           <Route element={<PublicRouter restricted redirectTo="contacts" />}>
-                            <Route path="/" element={<Welcome/>} />
+                            <Route index element={<Welcome/>} />
                           </Route>
                           <Route element={<PublicRouter restricted redirectTo="contacts" />}>
                             <Route path="register" element={<Registration />} />
@@ -49,7 +49,7 @@ const ContactsPage = lazy(() => import('../pages/Contacts/ContactPage'))
                             <Route path="contacts" element={<ContactsPage />} />
                           </Route>
                           <Route element={<PublicRouter restricted redirectTo="contacts" />}>
-                            <Route path="*" element={<Navigate to="login" />} />
+                            <Route path="*" element={<Navigate to="contacts" />} />
                           </Route>
                       </Routes>
               </Suspense>
